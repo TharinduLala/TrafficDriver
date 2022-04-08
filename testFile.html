@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/normalize.css">
+
+    <style>
+        body {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+        }
+       
+        .carImg {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.car {
+    position: absolute;
+    width: 15%;
+    height: fit-content;
+    padding: 0;
+    margin: 0;
+}
+#box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 1px solid red;
+    width: 100px;
+    height: 100px;
+}
+    </style>
+</head>
+<body id="body">
+    <div id="d" class="car"><img class="carImg" src="assets/images/greenCar.png" alt="" ></div>
+    <div id="box"></div>
+    <script src="assets/jquery-3.6.0.min.js"></script>
+    <script>
+        var d = $('#d');
+        var box = $('#box');
+        var dWidth=d.width();
+        var dHeight=d.height();
+        var bodyWidth=$('#body').width();
+        var bodyHeight=$('#body').height();
+        var left = false; 
+        var right= false;
+        var down = false;
+        var up = false;
+        $(document).ready(function(){
+
+            $(document).keydown(function(event){
+                var key = event.keyCode;
+             
+                console.log(dWidth,dWidth,bodyHeight,bodyHeight);
+
+                if(key==39&&right==false){
+                    right=requestAnimationFrame(rightd);
+                }
+                if(key==37&&left==false){
+                    left=requestAnimationFrame(leftd);
+                }
+                if(key==38&&up==false){
+                    right=requestAnimationFrame(upd);
+                }
+                if(key==40&&down==false){
+                    left=requestAnimationFrame(downd);
+                }
+            });
+            $(document).keyup(function(event){
+                var key = event.keyCode;
+                if(key==39){
+                    cancelAnimationFrame(right);
+                    right=false;
+                }
+                if(key==37){
+                    cancelAnimationFrame(left);
+                    left = false;
+                }
+                if(key==38){
+                    cancelAnimationFrame(up);
+                    up=false;
+                }
+                if(key==40){
+                    cancelAnimationFrame(down);
+                    down = false;
+                }
+            });
+            
+            function leftd(){
+                if ( parseInt(d.css('left')) > 0) {
+                    d.css('left',parseInt(d.css('left'))-5);
+                    left=requestAnimationFrame(leftd);
+                }
+               
+            }
+            function rightd(){
+                if (parseInt(d.css('left')) < bodyWidth - dWidth) {
+                    d.css('left',parseInt(d.css('left'))+5); 
+                    right=requestAnimationFrame(rightd);
+                }
+                
+            }
+            function upd(){
+                if (parseInt(d.css('top')) > 0) {
+                    d.css('top',parseInt(d.css('top'))-5);
+                    up=requestAnimationFrame(upd);
+                }
+               
+            }
+            function downd(){
+                if (parseInt(d.css('top')) < bodyHeight - dHeight) {
+                    d.css('top',parseInt(d.css('top'))+5); 
+                    down=requestAnimationFrame(downd) ;
+                }
+                
+            }
+
+            requestAnimationFrame(collision);
+            function collision() {
+            var x1 = d.offset().left;
+            var y1 = d.offset().top;
+            var h1 = d.height();
+            var w1 = d.width();
+            var b1 = y1 + h1;
+            var r1 = x1 + w1;
+            var x2 = box.offset().left;
+            var y2 = box.offset().top;
+            var h2 = box.height();
+            var w2 = box.width();
+            var b2 = y2 + h2;
+            var r2 = x2 + w2;
+
+        if (!(b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2)){console.log("HIt");};
+        requestAnimationFrame(collision);
+    }
+
+
+
+        });
+    </script>
+</body>
+</html>

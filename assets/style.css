@@ -1,0 +1,69 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    background-color:rgb(46, 204, 113);
+}
+
+.carImg {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.car {
+    position: absolute;
+    width: 15%;
+    height: fit-content;
+    padding: 0;
+    margin: 0;
+}
+
+.middleLine {
+    position: absolute;
+    height: 25%;
+    width: 4%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: rgba(255,255,255,0.5);
+}
+#middleLine_01 {
+    top: 0;
+}
+#middleLine_02 {
+    top: 0;
+    bottom: 0;
+}
+#middleLine_03 {
+    
+    bottom: 0;
+}
+
+#mainContainer {
+    position: relative;
+    height: 90%;
+    width: 30%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: #292929;
+    overflow: hidden;
+}
+
+#restartTab {
+    position: absolute;
+}
+
+#scoreSection {
+    height: 10%;
+    width: 30%;
+    position: absolute;
+    border: 1px solid black;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
