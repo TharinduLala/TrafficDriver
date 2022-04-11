@@ -18,6 +18,7 @@ body {
     height: fit-content;
     padding: 0;
     margin: 0;
+    z-index: 5;
 }
 
 .middleLine {
@@ -28,17 +29,33 @@ body {
     right: 0;
     margin: auto;
     background-color: rgba(255,255,255,0.5);
+    z-index: 3;
 }
 #middleLine_01 {
-    top: 0;
+    top: -10%;
 }
 #middleLine_02 {
-    top: 0;
-    bottom: 0;
+    top: 35%;
 }
 #middleLine_03 {
-    
-    bottom: 0;
+
+    top: 80%;
+}
+#otherCar_01{
+    left: 20%;
+    top: 10%;
+}
+#otherCar_02{
+    left: 0;
+    top: 30%;
+}
+#otherCar_03{
+    left: 20%;
+    top: 50%;
+}
+#otherCar_04{
+    left: 0;
+    top: 70%;
 }
 
 #mainContainer {
@@ -51,6 +68,7 @@ body {
     top: 0;
     background-color: #292929;
     overflow: hidden;
+    z-index: 2;
 }
 
 #restartTab {
